@@ -31,17 +31,39 @@ class SoundViewController: UIViewController {
             try session.setActive(true)
             
             // Create URL for audio file
+            let basePath: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+            let pathComponents = [basePath, "audio.m4a"]
+            let audioURL = NSURL.fileURL(withPathComponents: pathComponents)!
+            
             
             // Create settings for the audio recorder
+            var settings: [String:Any] = [:]
+            settings[AVFormatIDKey] = Int(kAudioFormatMPEG4AAC)
+            settings[AVSampleRateKey] = 44100.0
+            settings[AVNumberOfChannelsKey] = 2
             
             // Create audioRecorder object
-            audioRecorder = AVAudioRecorder(url: <#T##URL#>, settings: <#T##[String : Any]#>)
+            audioRecorder = try AVAudioRecorder(url: audioURL, settings: settings)
+            audioRecorder!.prepareToRecord()
         } catch let error as NSError {
             print(error)
         }
     }
     
     @IBAction func btnRec(_ sender: Any) {
+        if audioRecorder!.isRecording {
+            // Stop the recording
+            audioRecorder?.stop()
+            
+            // Change button title to Record
+            
+        } else {
+            // Start the recording
+            audioRecorder?.record()
+            
+            // Change the button title to Stop
+            btnRecord.setTitle ("Stop", for: .normal)
+        }
     }
     
     @IBAction func btnPlay(_ sender: Any) {
