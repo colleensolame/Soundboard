@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sounds-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Soundboard" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,7 +34,8 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LB2-xI-X4W" secondAttribute="bottom" id="R7x-m1-lq3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tgt-g1-aaI">
+                    <navigationItem key="navigationItem" title="Sounds" id="tgt-g1-aaI">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="7pB-bz-v18"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fZu-le-fHc">
                             <connections>
                                 <segue destination="F8k-et-WQX" kind="show" id="msX-3F-t9n"/>
